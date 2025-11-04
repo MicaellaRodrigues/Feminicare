@@ -1,0 +1,107 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserController = void 0;
+const typeorm_1 = require("typeorm");
+const User_1 = require("../models/User");
+const ApiError_1 = require("../utils/ApiError");
+class UserController {
+    static async create(req, res, next) {
+        try {
+            const { name, email, password } = req.body;
+            if (!name || !email || !password) {
+                throw new ApiError_1.ApiError(400, 'Missing required fields');
+            }
+            const userRepository = (0, typeorm_1.getRepository)(User_1.User);
+            // Check if email already exists
+            const existingUser = await userRepository.findOne({ where: { email } });
+            if (existingUser) {
+                throw new ApiError_1.ApiError(409, 'Email already in use');
+            }
+            // Create new user
+            const user = userRepository.create({ name, email, password });
+            await userRepository.save(user);
+            res.status(201).json({
+                success: true,
+                user: { id: user.id, name: user.name, email: user.email }
+            });
+        }
+        catch (error) {
+            next(error);
+        }
+    }
+    static async getAll(req, res, next) {
+        try {
+            const userRepository = (0, typeorm_1.getRepository)(User_1.User);
+            const users = await userRepository.find({ where: { isActive: true } });
+            res.status(200).json({
+                success: true,
+                count: users.length,
+                users
+            });
+        }
+        catch (error) {
+            next(error);
+        }
+    }
+    static async getById(req, res, next) {
+        try {
+            const { id } = req.params;
+            const userRepository = (0, typeorm_1.getRepository)(User_1.User);
+            const user = await userRepository.findOne({ where: { id, isActive: true } });
+            if (!user) {
+                throw new ApiError_1.ApiError(404, 'User not found');
+            }
+            res.status(200).json({
+                success: true,
+                user
+            });
+        }
+        catch (error) {
+            next(error);
+        }
+    }
+    static async update(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { name, email } = req.body;
+            const userRepository = (0, typeorm_1.getRepository)(User_1.User);
+            const user = await userRepository.findOne({ where: { id, isActive: true } });
+            if (!user) {
+                throw new ApiError_1.ApiError(404, 'User not found');
+            }
+            // Update user
+            await userRepository.update(id, {
+                name: name || user.name,
+                email: email || user.email
+            });
+            const updatedUser = await userRepository.findOne({ where: { id } });
+            res.status(200).json({
+                success: true,
+                user: updatedUser
+            });
+        }
+        catch (error) {
+            next(error);
+        }
+    }
+    static async delete(req, res, next) {
+        try {
+            const { id } = req.params;
+            const userRepository = (0, typeorm_1.getRepository)(User_1.User);
+            const user = await userRepository.findOne({ where: { id, isActive: true } });
+            if (!user) {
+                throw new ApiError_1.ApiError(404, 'User not found');
+            }
+            // Soft delete (set isActive to false)
+            await userRepository.update(id, { isActive: false });
+            res.status(200).json({
+                success: true,
+                message: 'User deleted successfully'
+            });
+        }
+        catch (error) {
+            next(error);
+        }
+    }
+}
+exports.UserController = UserController;

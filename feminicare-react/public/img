@@ -1,0 +1,12 @@
+O diretório `/feminicare-react/feminicare-react/public/img` é um diretório que deve conter as imagens utilizadas no projeto. Como você não pediu para adicionar arquivos específicos, aqui está uma descrição do que deve estar nesse diretório:
+
+- Este diretório deve conter os seguintes arquivos de imagem:
+  - Daisy.svg
+  - flor.png
+  - puberdade-min.png
+  - reprodutiva-min.png
+  - menopausa-min.png
+
+Os arquivos de imagem devem ser adicionados manualmente ao diretório `img`. Portanto, o conteúdo do diretório em si não pode ser representado como um arquivo, mas você deve garantir que as imagens mencionadas estejam presentes nesse local. 
+
+Se precisar de ajuda para criar ou adicionar algum desses arquivos, por favor, me avise!

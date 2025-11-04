@@ -1,0 +1,188 @@
+/* Estilos da página Home (Login e Cadastro) */
+main {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  padding: 7% 7% 3% 7%;
+  flex-wrap: wrap;
+}
+
+.vl {
+  border-left: 3px solid #B49BD2;
+  border-radius: 50px;
+  height: 50vh;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 20%;
+}
+
+/* Estilo do Login */
+.login {
+  display: inline-block;
+  background-color: #B49BD2;
+  border: transparent;
+  border-radius: 20px;
+  padding: 20px 40px 50px 40px;
+  width: 30%;
+  min-width: 300px;
+}
+
+.login h2 {
+  color: #F6F5ED;
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: bold;
+  text-align: left;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.login label {
+  font-family: "Poppins";
+  font-size: 14px;
+  color: #F6F5ED;
+  display: block;
+  margin: 10px 0 5px 0;
+}
+
+.login input {
+  background-color: #F6F5ED;
+  border: transparent;
+  color: #B49BD2;
+  font-family: "Poppins";
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  padding: 8px 15px;
+  margin-bottom: 10px;
+}
+
+.login a {
+  text-align: center;
+  display: block;
+  margin: 15px 0;
+  color: #F6F5ED;
+}
+
+.login button {
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
+  background-color: #F6F5ED;
+  font-family: "Poppins";
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  color: #B49BD2;
+  border: transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.login button:hover {
+  color: #F6F5ED;
+  background-color: #935DD3;
+}
+
+/* Estilo do Cadastro */
+.cadastro {
+  text-align: center;
+  padding: 20px 40px 50px 40px;
+  border: 2px solid #B49BD2;
+  border-radius: 10px;
+  width: 30%;
+  min-width: 300px;
+  background-color: white;
+}
+
+.cadastro h2 {
+  color: #B49BD2;
+  font-family: "Poppins";
+  font-weight: bold;
+  font-style: italic;
+  font-size: 32px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.cadastro label {
+  font-family: "Poppins";
+  font-size: 14px;
+  color: #B49BD2;
+  text-align: left;
+  display: block;
+  margin: 10px 0 5px 0;
+}
+
+.cadastro input {
+  border: 2px solid #B49BD2;
+  font-family: "Poppins";
+  font-size: 14px;
+  color: #B49BD2;
+  text-align: center;
+  width: 100%;
+  padding: 8px 15px;
+  margin-bottom: 10px;
+}
+
+.cadastro button {
+  display: inline-block;
+  width: auto;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #B49BD2;
+  font-family: "Poppins";
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  color: #F6F5ED;
+  border: transparent;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.cadastro button:hover {
+  color: #F6F5ED;
+  background-color: #935DD3;
+}
+
+/* Formulário compartilhado */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 50px 20px;
+  }
+
+  .vl {
+    display: none; /* Removendo a linha vertical */
+  }
+
+  .login, .cadastro {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .login h2, .cadastro h2 {
+    font-size: 24px;
+  }
+
+  .login input, .cadastro input {
+    width: 100%;
+  }
+
+  .login button, .cadastro button {
+    width: 100%;
+  }
+}

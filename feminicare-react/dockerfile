@@ -1,0 +1,18 @@
+# Usar Node.js como base
+FROM node:18
+
+# Criar diretório de trabalho
+WORKDIR /app
+
+# Copiar dependências e instalar
+COPY package*.json ./
+RUN npm install
+
+# Copiar o restante do código
+COPY . .
+
+# Informar a porta usada
+EXPOSE 3000
+
+# Comando para iniciar o app
+CMD ["npm", "start"]
